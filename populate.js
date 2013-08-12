@@ -1,11 +1,28 @@
 
 var sublevel = require('level-sublevel')
+  , after    = require('after')
 
-  , populate = function(db, object, callback) {
-      var batch = Object.keys(object).map(function(key) {
-            return { type: 'put', key: key, value: object[key] }
-          })
-      db.batch(batch, callback)
+  , isObject = function(object) {
+      return typeof(object) === 'object' && object !== null
     }
 
-module.exports = populate
+  , populate = function(db, object, callback) {
+      var keys = Object.keys(object)
+        , done = after(keys.length, callback)
+
+      keys.forEach(function(key) {
+        var value = object[key]
+
+        if (isObject(value))
+          populate(db.sublevel(key), value, done)
+        else
+          db.put(key, value, done)
+      })
+    }
+
+  , start = function(db, object, callback) {
+      populate(sublevel(db), object, callback)
+    }
+
+module.exports = start
+

@@ -1,10 +1,18 @@
 {
-  "dependencies": {
-    "level-sublevel": "~4.8.3",
-    "after": "~0.8.1"
+  "name": "level-populate",
+  "author": "David Björklund <david.bjorklund@gmail.com> (http://davidbjorklund.se)",
+  "description": "A simple way to populate a level-database",
+  "version": "0.0.0",
+  "repository": {
+    "url": "git://github.com/kesla/level-populate.git"
   },
+  "main": "populate.js",
+  "scripts": {
+    "test": "tap test.js"
+  },
+  "dependencies": {},
   "devDependencies": {
-    "tap": "~0.4.4",
-    "level-test": "~1.5.1"
-  }
+    "tap": "~0.4.0"
+  },
+  "licence": "MIT"
 }

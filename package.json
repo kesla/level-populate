@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "level-sublevel": "~4.8.3"
+  },
+  "devDependencies": {
+    "tap": "~0.4.4",
+    "level-test": "~1.5.1"
+  }
+}
